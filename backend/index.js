@@ -22,6 +22,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 // Save an email
 app.post("/join", async (req, res) => {
   const { email } = req.body;
+  console.log("Received email:", email); // ✅ Log input
+
   if (!email) return res.status(400).json({ message: "Email required" });
 
   const { data, error } = await supabase
@@ -29,12 +31,14 @@ app.post("/join", async (req, res) => {
     .insert([{ email }]);
 
   if (error) {
-    console.error(error);
+    console.error("Supabase insert error:", error); // ✅ Log Supabase error
     return res.status(500).json({ message: "Error saving email" });
   }
 
+  console.log("Saved to Supabase:", data); // ✅ Log success
   res.json({ message: "Thanks for joining!", saved: data });
 });
+
 
 // Return all saved emails (optional)
 app.get("/emails", (req, res) => {
