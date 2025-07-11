@@ -1,27 +1,29 @@
 const { createClient } = require("@supabase/supabase-js");
-
-// Replace with your actual keys from Supabase dashboard
-const supabaseUrl = "https://undiboutsautvefnlbrt.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVuZGlib3V0c2F1dHZlZm5sYnJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxMTMxOTYsImV4cCI6MjA2NzY4OTE5Nn0.f9YP9jbLWoUgWdm-9QqRyxmXzZ3lzMuBFDnaAiFjfVE";
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+
+// Replace with your actual frontend domain
+const allowedOrigin = "https://rogerfang28.github.io";
+
+// ✅ Enable CORS only for your frontend
+app.use(cors({
+  origin: allowedOrigin
+}));
+
 app.use(express.json());
 
-const emails = []; // in-memory storage
+// Supabase client
+const supabaseUrl = "https://undiboutsautvefnlbrt.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVuZGlib3V0c2F1dHZlZm5sYnJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxMTMxOTYsImV4cCI6MjA2NzY4OTE5Nn0.f9YP9jbLWoUgWdm-9QqRyxmXzZ3lzMuBFDnaAiFjfVE";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Save an email
 app.post("/join", async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: "Email required" });
 
-  // Save to Supabase
   const { data, error } = await supabase
     .from("emails")
     .insert([{ email }]);
@@ -34,12 +36,13 @@ app.post("/join", async (req, res) => {
   res.json({ message: "Thanks for joining!", saved: data });
 });
 
-
-// Return all saved emails
+// Return all saved emails (optional)
 app.get("/emails", (req, res) => {
-  res.json({ emails });
+  res.json({ emails: ["disabled in-memory list"] });
 });
 
-app.listen(3000, () => {
-  console.log("Backend running at http://localhost:3000");
+// Port for local testing or Render deployment
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
 });
