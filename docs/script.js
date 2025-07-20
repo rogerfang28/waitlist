@@ -113,7 +113,7 @@ document.getElementById("join").addEventListener("click", async function() {
     
     try {
         // Send to backend
-        const response = await fetch("http://localhost:3000/join", {
+        const response = await fetch("https://waitlist-backend-h04k.onrender.com/join", {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json",
