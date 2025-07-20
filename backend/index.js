@@ -7,9 +7,10 @@ const app = express();
 // Replace with your actual frontend domain
 const allowedOrigin = "https://rogerfang28.github.io";
 
-// ✅ Enable CORS only for your frontend
+// ✅ Enable CORS for both production and local development
 app.use(cors({
-  origin: allowedOrigin
+  origin: [allowedOrigin, "http://localhost:8080", "http://127.0.0.1:8080", "file://"],
+  credentials: true
 }));
 
 app.use(express.json());
@@ -67,10 +68,18 @@ app.post("/join", async (req, res) => {
     if (error) {
       console.error("Supabase insert error:", error);
       
-      // Handle specific duplicate key error
+      // Handle specific errors
       if (error.code === '23505') {
         return res.status(409).json({ 
           message: "This email is already on our waitlist! We'll be in touch soon." 
+        });
+      }
+      
+      // Handle Row-Level Security policy error
+      if (error.code === '42501') {
+        console.error("RLS Policy Error - need to configure Supabase policies");
+        return res.status(500).json({ 
+          message: "Database configuration issue. Please contact support." 
         });
       }
       
