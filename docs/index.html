@@ -1,19 +1,88 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Join the Waitlist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>DebateLogic - Join the Waitlist</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Welcome to the Waitlist</h1>
-      <p>Be the first to know when we launch.</p>
-      <div id="form-area">
-        <input type="email" id="email">
-        <button id="join">Join the Waitlist</button>
+    <div class="hero-section">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-balance-scale"></i>
+          <span>DebateLogic</span>
+        </div>
+        
+        <div class="hero-content">
+          <h1>Master the Art of <span class="highlight">Logical Debate</span></h1>
+          <p class="subtitle">Visualize arguments, track facts, and expose logical fallacies with our revolutionary debate analysis tool.</p>
+          
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-search"></i>
+              <span>Fact Verification</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-brain"></i>
+              <span>Logic Analysis</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-chart-network"></i>
+              <span>Argument Mapping</span>
+            </div>
+          </div>
+
+          <div id="form-area" class="waitlist-form">
+            <h2>Be Among the First to Experience DebateLogic</h2>
+            <p class="form-subtitle">Join thousands of early adopters and get exclusive early access</p>
+            <div class="input-group">
+              <input type="email" id="email" placeholder="Enter your email address" required>
+              <button id="join">
+                <span class="button-text">Join Waitlist</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <p class="privacy-note">
+              <i class="fas fa-shield-alt"></i>
+              We respect your privacy. No spam, ever.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container">
-        <p>Our product is a debate tool that helps visualize and explain the logistics behind an argument, so that you can keep track of all the facts. This way lies and illogical operations will be pointed out easily. Whether you want to have a fair argument with your friend or debunk political statements, this tool will help.</p>
+
+    <div class="about-section">
+      <div class="container">
+        <h2>Why DebateLogic?</h2>
+        <div class="benefits">
+          <div class="benefit">
+            <i class="fas fa-bullseye"></i>
+            <h3>Precision Debates</h3>
+            <p>Keep discussions focused and productive by visualizing the logical structure of arguments.</p>
+          </div>
+          <div class="benefit">
+            <i class="fas fa-shield-check"></i>
+            <h3>Truth Verification</h3>
+            <p>Instantly identify unsupported claims and logical fallacies in real-time.</p>
+          </div>
+          <div class="benefit">
+            <i class="fas fa-users"></i>
+            <h3>Fair Discourse</h3>
+            <p>Create a level playing field for debates, whether casual discussions or political analysis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 DebateLogic. All rights reserved.</p>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
