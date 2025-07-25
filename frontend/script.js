@@ -11,7 +11,7 @@ document.getElementById("join").addEventListener("click",function(){
     text.style.padding = "2px";
     text.style.borderRadius = "5px";
     text.style.backgroundColor = "rgba(88, 243, 135, 1)";
-    fetch("http://localhost:3000/join", {
+    fetch(`${import.meta.env.BACKEND_URL}/join`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
