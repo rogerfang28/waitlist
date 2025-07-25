@@ -6,7 +6,7 @@ const app = express();
 
 // Replace with your actual frontend domain
 const allowedOrigins = [
-  "https://waitlist-zkrv.onrender.com",
+  "https://waitlist-backend-h04k.onrender.com",
   "https://rogerfang28.github.io"
 ];
 
