@@ -5,11 +5,13 @@ const cors = require("cors");
 const app = express();
 
 // Replace with your actual frontend domain
-const allowedOrigin = "https://rogerfang28.github.io";
+const allowedOrigins = [
+  "https://waitlist-zkrv.onrender.com",
+  "https://rogerfang28.github.io"
+];
 
-// ✅ Enable CORS only for your frontend
 app.use(cors({
-  origin: allowedOrigin
+  origin: allowedOrigins
 }));
 
 app.use(express.json());
